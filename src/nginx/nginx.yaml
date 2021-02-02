@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: my_nginx:v1
+        image: amayor_nginx_image
         imagePullPolicy: Never
         ports:
         - containerPort: 80
