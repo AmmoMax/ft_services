@@ -4,15 +4,44 @@ metadata:
   name: mysql-deployment
   labels:
     app: mysql
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
         app: mysql
-    template:
-      metadata:
-        labels:
-          app: mysql
-      spec:
-        containers:
-          - name: 
+    spec:
+      containers:
+        - name: mysql
+          image: amayor_mysql_image
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 3306
+          env:
+          - name: USER_NAME
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: mysql-user-name
+          - name: USER_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-secret
+                key: mysql-user-password
+          - name: DB_NAME
+            value: wordpress
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+spec:
+  selector:
+    app: mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
