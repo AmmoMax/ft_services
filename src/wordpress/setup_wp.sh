@@ -7,6 +7,7 @@ mkdir /www && chown -R www:www /var/lib/nginx && chown -R www:www /www && mkdir 
 tar -xvf wordpress.tar.gz && mv wordpress /www/
 rm -f wordpress.tar.gz
 # chmod 775 /www/wordpress/
+chown -R www: /www/wordpress
 
 echo "***** Copy wp-config.php to /www/wordpress/ ****"
 cp wp-config.php /www/wordpress/
