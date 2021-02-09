@@ -3,5 +3,5 @@ echo "** Run setup wordpress **"
 source setup_wp.sh
 echo "** Run php-fpm7 **"
 php-fpm7
-echo "Starting nginx daemon"
+echo "** Starting nginx daemon **"
 nginx -g "daemon off;"
