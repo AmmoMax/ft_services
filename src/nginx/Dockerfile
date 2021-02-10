@@ -6,7 +6,7 @@
 #    By: amayor <amayor@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/24 20:10:58 by amayor            #+#    #+#              #
-#    Updated: 2021/02/09 22:56:19 by amayor           ###   ########.fr        #
+#    Updated: 2021/02/10 00:07:20 by amayor           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,5 +23,4 @@ EXPOSE 80
 EXPOSE 443
 EXPOSE 22
 
-# CMD ["nginx", "-g", "daemon off;"]
 CMD ["sh", "entrypoint.sh"]
