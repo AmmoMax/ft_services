@@ -29,7 +29,6 @@ define( 'DB_USER', 'amayor' );
 define( 'DB_PASSWORD', 'amayor' );
 
 /** Имя сервера MySQL */
-// define( 'DB_HOST', 'localhost' );
 define( 'DB_HOST', 'mysql-service: 3306' );
 
 /** Кодировка базы данных для создания таблиц. */

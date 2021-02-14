@@ -33,5 +33,22 @@ kubectl apply -f src/metallb/metallb-configmap.yaml
 echo "** Build docker image for nginx **"
 docker build -t amayor_nginx_image src/nginx
 
+echo "** Build image for mysql **"
+docker build -t amayor_mysql_image src/mysql
+
+echo "** Build image for wordpress **"
+docker build -t amayor_wordpress_image src/wordpress
+
+############################################################
+# Start deploy for any logical services of the our project #
+############################################################
+
 echo "** Run deployment for nginx **"
 kubectl apply -f src/nginx/nginx.yaml
+
+echo "** Run deployment for mysql **"
+kubectl apply -f src/mysql/mysql-secret.yaml
+kubectl apply -f src/mysql/mysql.yaml
+
+echo "** Run deployment for wordpress **"
+kubectl apply -f src/wordpress/wordpress.yaml
