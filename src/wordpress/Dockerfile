@@ -6,7 +6,7 @@
 #    By: amayor <amayor@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 21:24:14 by amayor            #+#    #+#              #
-#    Updated: 2021/02/07 23:55:37 by amayor           ###   ########.fr        #
+#    Updated: 2021/02/16 22:51:16 by amayor           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ RUN apk add --update 	php7 \
 						php-xml \
 						php-zip \
 						wget \
-						nginx && rm -rf /var/lib/apt/lists/*
+						nginx
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY wp-config.php .
