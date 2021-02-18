@@ -22,11 +22,14 @@
 /** Имя базы данных для WordPress */
 define( 'DB_NAME', 'wordpress' );
 
+// Тут хардкод имени и пароля пользователя потому что
+// по каким то причинам не срабатывало получение переменной окружения:
+// define( 'DB_USER', getenv('DB_USER')) -> вот так не работает непонятно почему, бился с этим целый вечер и пока так и не смог победить
 /** Имя пользователя MySQL */
-define( 'DB_USER', 'amayor' );
+define( 'DB_USER', 'amayor');
 
 /** Пароль к базе данных MySQL */
-define( 'DB_PASSWORD', 'amayor' );
+define( 'DB_PASSWORD', 'amayor');
 
 /** Имя сервера MySQL */
 define( 'DB_HOST', 'mysql-service: 3306' );
