@@ -6,11 +6,11 @@
 #    By: amayor <amayor@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/15 23:42:04 by amayor            #+#    #+#              #
-#    Updated: 2021/02/17 22:15:31 by amayor           ###   ########.fr        #
+#    Updated: 2021/02/20 21:17:39 by amayor           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
+FROM alpine:3.13
 
 RUN apk add --update 	nginx \
 						php7 \
