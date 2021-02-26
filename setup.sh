@@ -39,6 +39,12 @@ docker build -t amayor_mysql_image src/mysql
 echo "** Build image for wordpress **"
 docker build -t amayor_wordpress_image src/wordpress
 
+echo "** Build image for phpmyadmin **"
+docker build -t amayor_pma_image src/phpmyadmin
+
+echo "** Build image for ftps server **"
+docker build -t amayor_ftps_image src/ftps
+
 ############################################################
 # Start deploy for any logical services of the our project #
 ############################################################
@@ -52,3 +58,9 @@ kubectl apply -f src/mysql/mysql.yaml
 
 echo "** Run deployment for wordpress **"
 kubectl apply -f src/wordpress/wordpress.yaml
+
+echo "** Run deployment for phpmyadmin **"
+kubectl apply -f src/phpmyadmin/phpmyadmin.yaml
+
+echo "** Run deployment for ftps server **"
+kubectl apply -f src/ftps/ftps.yaml
