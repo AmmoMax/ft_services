@@ -1,0 +1,37 @@
+Описание порядка действий и некоторых моментов настройки InfluxDB для работы в контейнере в связке с Grafana
+
+1. Автоматизировать создание конфига при старте контейнера
+	1.1. Сделать конфиг для InfluxDB через influx setup
+		При запуске контейнера в нем должны быть переменные окружения:
+		INFLUXDB_URL=http://localhost:8086
+		INFLUX_TOKEN="Qq_YHXnShisgcLB6M1pasbc1oeBNHwnKFvqZGr5I1pU3XifMJk8WDBjsfEw7q-pzWdsXkhQE-ABywtaIPw0JSQ=="
+	1.2 После старта демона influxd запускать настройку:
+		influx setup --org ft_services --bucket telegraf --host $INFLUXDB_URL --username amayor --password amayor1234 -t $INFLUX_TOKEN --force
+
+2. Автоматизировать настройку источника данных (data source) в Grafana при старте  контейнера:
+
+Для автоматического добавления конфига источника данных (data source) в Grafana пришлось сделать файл с конфигом:
+apiVersion: 1
+datasources:
+  - name: InfluxDB
+    type: "influxdb"
+    access: proxy
+    orgId: 1
+    url: $INFLUXDB_URL
+    user: amayor
+    secureJsonData:
+      token: $INFLUX_TOKEN
+    database: telegraf
+    basicAuth: true
+    isDefault: true
+    jsonData:
+      defaultBucket: telegraf
+      httpMode: "POST"
+      organization: ft_services
+      version: Flux
+    readOnly: false
+
+И при старте контейнера копировать его по пути:
+/usr/share/grafana/conf/provisioning/datasources
+
+Т.е. в домашнюю папку Grafana
