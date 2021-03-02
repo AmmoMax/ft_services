@@ -3,12 +3,12 @@
 # Description: Сheck whether influxd is running and configure it
 
 echo "** Check INFLUXDB_URL environment variable **"
-if [ -z $INFLUXDB_URL ]
+if [ -z $INFLUX_HOST ]
 then
 	echo "env var INFLUXDB_URL is not set!"
 	exit 1
 else
-	echo "INFLUXDB_URL = $INFLUXDB_URL"
+	echo "INFLUXDB_URL = $INFLUX_HOST"
 fi
 
 echo "** Check INFLUX_TOKEN environment variable **"
@@ -28,7 +28,7 @@ do
 done
 
 echo "** Creating InfluxDB config **"
-influx setup --org ft_services --bucket telegraf --host $INFLUXDB_URL --username amayor --password amayor1234 -t $INFLUX_TOKEN --force
+influx setup --org ft_services --bucket telegraf --host $INFLUX_HOST --username INFLUXDB_USER --password INFLUXDB_PASSWORD -t $INFLUX_TOKEN --force
 
 echo "** Running the telegraph installation and configuration script **"
 sh setup_telegraf.sh

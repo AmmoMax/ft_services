@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb-deployment
+  labels:
+    app: influxdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: influxdb
+  template:
+    metadata:
+      labels:
+        app: influxdb
+    spec:
+      containers:
+        - name: influxdb
+          image: amayor_influxdb_image
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 8086
+          volumeMounts:
+          - name: docker-socket
+            mountPath: /var/run/docker.sock
+          env:
+          - name: INFLUX_HOST
+            value: http://localhost:8086
+          - name: INFLUX_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: influxdb-secret
+                key: influxdb_token
+          - name: INFLUXDB_USER
+            valueFrom:
+              secretKeyRef:
+                name: influxdb-secret
+                key: influxdb_user
+          - name: INFLUXDB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: influxdb-secret
+                key: influxdb_password
+      volumes:
+      - name: docker-socket
+        hostPath:
+          path: /var/run/docker.sock
+          type: Socket
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb-service
+spec:
+  selector:
+    app: influxdb
+  ports:
+  - protocol: TCP
+    port: 8086
+    targetPort: 8086
