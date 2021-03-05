@@ -45,6 +45,12 @@ docker build -t amayor_pma_image src/phpmyadmin
 echo "** Build image for ftps server **"
 docker build -t amayor_ftps_image src/ftps
 
+echo "** Build image for grafana server **"
+docker build -t amayor_grafana_image src/grafana
+
+echo "** Build image for influxdb server **"
+docker build -t amayor_influxdb_image src/influxdb
+
 ############################################################
 # Start deploy for any logical services of the our project #
 ############################################################
@@ -64,3 +70,13 @@ kubectl apply -f src/phpmyadmin/phpmyadmin.yaml
 
 echo "** Run deployment for ftps server **"
 kubectl apply -f src/ftps/ftps.yaml
+
+echo "** Run deployment for the influxdb server **"
+kubectl apply -f src/influxdb/influxdb-secret.yaml
+kubectl apply -f src/influxdb/influxdb-pv.yaml
+kubectl apply -f src/influxdb/influxdb-pvc.yaml
+kubectl apply -f src/influxdb/influxdb.yaml
+
+echo "** Run deployment for the grafana server **"
+kubectl apply -f src/grafana/grafana-secret.yaml
+kubectl apply -f src/grafana/grafana.yaml
