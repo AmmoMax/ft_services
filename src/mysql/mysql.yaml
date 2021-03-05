@@ -20,6 +20,9 @@ spec:
           imagePullPolicy: Never
           ports:
           - containerPort: 3306
+          volumeMounts:
+          - name: mysql-data
+            mountPath: /var/lib/mysql
           env:
           - name: USER_NAME
             valueFrom:
@@ -33,6 +36,10 @@ spec:
                 key: mysql-user-password
           - name: DB_NAME
             value: wordpress
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-pvc
 ---
 apiVersion: v1
 kind: Service
