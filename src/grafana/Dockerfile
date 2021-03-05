@@ -6,7 +6,7 @@
 #    By: amayor <amayor@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/26 22:45:56 by amayor            #+#    #+#              #
-#    Updated: 2021/03/01 16:15:32 by amayor           ###   ########.fr        #
+#    Updated: 2021/03/05 18:28:58 by amayor           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,5 +18,7 @@ RUN apk add --update	wget \
 COPY grafana.ini /etc/
 COPY entrypoint.sh .
 COPY sample.yaml /usr/share/grafana/conf/provisioning/datasources
+COPY dashboards.yaml /usr/share/grafana/conf/provisioning/dashboards
+COPY dashboards /var/lib/grafana/dashboards/
 
 CMD ["sh", "entrypoint.sh"]
