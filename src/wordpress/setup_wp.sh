@@ -10,7 +10,7 @@ echo "** Creating user for nginx **"
 adduser -D -g 'www' www
 
 echo "** Download latest wordpress version **"
-wget https://ru.wordpress.org/latest-ru_RU.tar.gz -O wordpress.tar.gz
+wget -c --tries=30 https://ru.wordpress.org/latest-ru_RU.tar.gz -O wordpress.tar.gz
 
 echo "** Make dir for wordpress **"
 mkdir /www

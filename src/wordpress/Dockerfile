@@ -6,7 +6,7 @@
 #    By: amayor <amayor@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 21:24:14 by amayor            #+#    #+#              #
-#    Updated: 2021/02/16 22:51:16 by amayor           ###   ########.fr        #
+#    Updated: 2021/03/05 23:40:18 by amayor           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ RUN apk add --update 	php7 \
 						php-json \
 						php-mbstring \
 						php-mysqli \
-						# php-imagick \
 						php-xml \
 						php-zip \
 						wget \
