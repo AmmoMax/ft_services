@@ -13,7 +13,7 @@ echo "** Make dir for phpmyadmin **"
 mkdir /www
 
 echo "** Download latest version of phpmyadmin **"
-wget https://files.phpmyadmin.net/phpMyAdmin/5.1.0-rc2/phpMyAdmin-5.1.0-rc2-all-languages.tar.gz -O phpMyAdmin.tar.gz
+wget -c --tries=30 https://files.phpmyadmin.net/phpMyAdmin/5.1.0-rc2/phpMyAdmin-5.1.0-rc2-all-languages.tar.gz -O phpMyAdmin.tar.gz
 
 echo "***** Unpack and remove tar *****"
 tar -zxvf phpMyAdmin.tar.gz && rm -rf phpMyAdmin.tar.gz
