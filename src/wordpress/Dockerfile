@@ -6,7 +6,7 @@
 #    By: amayor <amayor@student.21-school.ru>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/28 21:24:14 by amayor            #+#    #+#              #
-#    Updated: 2021/03/05 23:40:18 by amayor           ###   ########.fr        #
+#    Updated: 2021/03/07 18:26:47 by amayor           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,14 @@ RUN apk add --update 	php7 \
 						php-xml \
 						php-zip \
 						wget \
-						nginx
+						nginx \
+						supervisor
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY wp-config.php .
 COPY setup_wp.sh .
 COPY entrypoint.sh .
+COPY supervisord.conf /etc/supervisord.conf
 
 EXPOSE 5050
 

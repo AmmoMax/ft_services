@@ -9,8 +9,5 @@
 echo "** Run setup wordpress **"
 source setup_wp.sh
 
-echo "** Run php-fpm7 **"
-php-fpm7
-
-echo "** Starting nginx daemon **"
-nginx -g "daemon off;"
+echo "** Run supervisord with custom config **"
+/usr/bin/supervisord -c /etc/supervisord.conf
