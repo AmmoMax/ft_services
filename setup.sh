@@ -60,6 +60,8 @@ kubectl apply -f src/nginx/nginx.yaml
 
 echo "** Run deployment for mysql **"
 kubectl apply -f src/mysql/mysql-secret.yaml
+kubectl apply -f src/mysql/mysql-pv.yaml
+kubectl apply -f src/mysql/mysql-pvc.yaml
 kubectl apply -f src/mysql/mysql.yaml
 
 echo "** Run deployment for wordpress **"
