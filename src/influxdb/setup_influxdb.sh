@@ -29,6 +29,3 @@ done
 
 echo "** Creating InfluxDB config **"
 influx setup --org ft_services --bucket telegraf --host $INFLUX_HOST --username INFLUXDB_USER --password INFLUXDB_PASSWORD -t $INFLUX_TOKEN --force
-
-echo "** Running the telegraph installation and configuration script **"
-sh setup_telegraf.sh

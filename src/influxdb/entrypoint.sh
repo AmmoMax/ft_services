@@ -15,5 +15,5 @@ cp influxdb2-2.0.4-linux-amd64/influxd /usr/local/bin
 echo "** Run script for setup InfluxDB **"
 source setup_influxdb.sh &
 
-echo "** Run influxd **"
-influxd
+echo "** Run supervisord with custom config **"
+/usr/bin/supervisord -c /etc/supervisord.conf
