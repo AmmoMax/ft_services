@@ -10,6 +10,6 @@
 All your containers must restart in case of a crash or stop of one of its component
 parts.																					(done)
 
-3. Проверка всех кейсов из чеклиста
+3. Проверка всех кейсов из чеклиста														(done)
 
 4. Загрузка готовой БД wordpress в mysql базу 											(done)
