@@ -28,8 +28,11 @@ echo "** Change owner for nginx distr dir and dir with phpmyadmin **"
 chown -R www:www /var/lib/nginx
 chown -R www:www /www
 
-echo "** Run php-fpm7 **"
-php-fpm7
+echo "** Run supervisord with custom config **"
+/usr/bin/supervisord -c /etc/supervisord.conf
 
-echo "** Starting nginx daemon **"
-nginx -g "daemon off;"
+# echo "** Run php-fpm7 **"
+# php-fpm7
+
+# echo "** Starting nginx daemon **"
+# nginx -g "daemon off;"
